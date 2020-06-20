@@ -48,10 +48,9 @@ class ListContoller  extends Controller
     public function index()
     {
         $user = auth()->user()->id;
-
-         $role = Role::where('role_id', '=', $user)->count();
-
+        $role = Role::where('role_id', '=', $user)->count();
         $jobs = Job::all();
+
         return view('list.index', compact('jobs','role'));
     }
 
@@ -100,8 +99,8 @@ class ListContoller  extends Controller
     public function destroy($id)
     {
         $jobs = Job::findOrFail($id);
-
         $jobs->delete();
+
         return redirect(route('list.index'));
     }
 

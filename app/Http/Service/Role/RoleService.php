@@ -33,11 +33,11 @@ class RoleService implements RoleServiceInterface
     }
 
     /**
-     * @param $email_admin $email_admin
+     * @param  string $emailAdmin
      */
-    public function delete(string $email_admin): void
+    public function delete(string $emailAdmin): void
     {
-            $role = Role::where('email_admin', '=', $email_admin)->first();
+            $role = Role::where('email_admin', '=', $emailAdmin)->first();
             $role->delete();
 
     }

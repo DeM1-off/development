@@ -52,14 +52,11 @@ class RoleAdd extends Command
 
         $roleList = $this->roleservice->getUsers()->pluck('email')->toArray();
         $email_admin = $this->choice('Email add Admin', $roleList);
-
-
         $data = compact('email_admin');
         $data['role_id'] = $email_admin;
 
         try {
             $this->roleservice->add($data);
-
             $this->alert('New Admin --'. $email_admin .' Add');
 
         }catch (\InvalidArgumentException $exception)

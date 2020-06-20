@@ -4,7 +4,7 @@
 namespace App\Http\Service\Role;
 
 
-use App\Models\Role;
+
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -20,9 +20,9 @@ interface RoleServiceInterface
     public function add(array $data): void;
 
     /**
-     * @param string $email_admin
+     * @param string $emailAdmin
      */
-    public function delete(string $email_admin) : void;
+    public function delete(string $emailAdmin) : void;
 
     /**
      * @return Collection|null

@@ -50,15 +50,15 @@ class RoleDelete extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $roleList = $this->roleservice->getUsers()->pluck('email')->toArray();
-        $email_admin = $this->choice('Choice delete  Admin', $roleList);
+        $emailAdmin = $this->choice('Choice delete  Admin', $roleList);
 
         try {
             if ($this->confirm('Do you wish delete')) {
-                $this->roleservice->delete($email_admin);
-                $this->alert('Admin  --' .$email_admin  .' delete');
+                $this->roleservice->delete($emailAdmin);
+                $this->alert('Admin  --' .$emailAdmin  .' delete');
             }
             else{
-                $this->alert('Admin  --' .$email_admin  .' stay');
+                $this->alert('Admin  --' .$emailAdmin  .' stay');
             }
 
 
