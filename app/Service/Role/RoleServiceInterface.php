@@ -1,9 +1,7 @@
 <?php
 
 
-namespace App\Http\Service\Role;
-
-
+namespace App\Service\Role;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -40,5 +38,10 @@ interface RoleServiceInterface
      * @return Collection
      */
     public function getUsers(): Collection;
+
+    /**
+     * @return Collection
+     */
+    public function geDeleteUsers(): Collection;
 
 }

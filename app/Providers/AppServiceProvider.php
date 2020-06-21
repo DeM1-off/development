@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Http\Repositories\JobRepository;
-use App\Http\Repositories\JobRepositoryInterface;
-use App\Http\Service\Job\JobServise;
-use App\Http\Service\Job\JobServiseInterface;
-use App\Http\Service\Role\RoleService;
-use App\Http\Service\Role\RoleServiceInterface;
+use App\Repositories\JobRepository;
+use App\Repositories\JobRepositoryInterface;
+use App\Service\Job\JobServise;
+use App\Service\Job\JobServiseInterface;
+use App\Service\Role\RoleService;
+use App\Service\Role\RoleServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,9 +22,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RoleServiceInterface::class,RoleService::class);
         $this->app->bind(JobServiseInterface::class,JobServise::class);
         $this->app->bind(JobRepositoryInterface::class,JobRepository::class);
-
-
-
     }
 
     /**

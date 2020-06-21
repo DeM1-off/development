@@ -3,8 +3,7 @@
 
 namespace App\Console\Commands;
 
-
-use App\Http\Service\Role\RoleServiceInterface;
+use App\Service\Role\RoleServiceInterface;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -39,7 +38,6 @@ class RoleAdd extends Command
     {
         $this->roleservice = $roleservice;
         parent::__construct();
-
     }
 
     /**
@@ -49,22 +47,18 @@ class RoleAdd extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $roleList = $this->roleservice->getUsers()->pluck('email')->toArray();
-        $email_admin = $this->choice('Email add Admin', $roleList);
+        $emailAdmin = $this->choice('Email add Admin', $roleList);
         $data = compact('email_admin');
-        $data['role_id'] = $email_admin;
-
+        $data['role_id'] = $emailAdmin;
         try {
             $this->roleservice->add($data);
-            $this->alert('New Admin --'. $email_admin .' Add');
-
+            $this->alert('New Admin --'. $emailAdmin .' Add');
         }catch (\InvalidArgumentException $exception)
         {
             $this->error('ERROR : '. $exception->getMessage());
         }
         return 0;
-
     }
 
 

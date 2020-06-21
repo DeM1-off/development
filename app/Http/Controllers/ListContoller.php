@@ -4,13 +4,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\JobReuest;
-use App\Http\Service\Job\JobServiseInterface;
+use App\Service\Job\JobServiseInterface;
 use App\Models\Job;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Response;
-
-
 
 /**
  * Class ListContoller
@@ -18,13 +16,6 @@ use Illuminate\Http\Response;
  */
 class ListContoller  extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-
     /**
      * @var JobServiseInterface
      */
@@ -36,7 +27,6 @@ class ListContoller  extends Controller
      */
     public function __construct(JobServiseInterface $jobService)
     {
-
         $this->jobService = $jobService;
     }
 
@@ -50,7 +40,6 @@ class ListContoller  extends Controller
         $user = auth()->user()->id;
         $role = Role::where('role_id', '=', $user)->count();
         $jobs = Job::all();
-
         return view('list.index', compact('jobs','role'));
     }
 
@@ -60,7 +49,6 @@ class ListContoller  extends Controller
      */
     public function show($id)
     {
-
         $job = $this->fetchPayOrFail($id);
         return view('list.show', compact('job'));
     }
@@ -72,9 +60,7 @@ class ListContoller  extends Controller
     public function edit($id)
     {
         $job =  $this->fetchPayOrFail($id);
-
         return view('list.edit', compact('job'));
-
     }
 
     /**
@@ -85,11 +71,8 @@ class ListContoller  extends Controller
      */
     public function update(JobReuest $request, $id)
     {
-
         $this->jobService->updateJob($id, $request->all());
-
         return redirect(route('list.index'));
-
     }
 
     /**
@@ -100,7 +83,6 @@ class ListContoller  extends Controller
     {
         $jobs = Job::findOrFail($id);
         $jobs->delete();
-
         return redirect(route('list.index'));
     }
 
@@ -112,12 +94,10 @@ class ListContoller  extends Controller
     {
         try {
             return $this->jobService->getJobById($id);
-
         }
         catch (\Exception $e){
             abort(Response::HTTP_NOT_FOUND,$e->getMessage());
         }
-
     }
 
 

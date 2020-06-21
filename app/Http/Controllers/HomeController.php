@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\JobReuest;
-use App\Http\Service\Job\JobServiseInterface;
+use App\Service\Job\JobServiseInterface;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use function GuzzleHttp\Psr7\str;
 
 
 /**
@@ -17,11 +16,6 @@ use function GuzzleHttp\Psr7\str;
  */
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
 
     /**
      * @var JobServiseInterface
@@ -35,9 +29,6 @@ class HomeController extends Controller
     public function __construct(JobServiseInterface $jobService)
     {
         $this->middleware('auth');
-
-
-
         $this->jobService = $jobService;
     }
 
@@ -48,9 +39,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $jobs = $this->jobService->getOnlyOneUser();
-
         return view('job.home', compact('jobs'));
     }
 
@@ -68,21 +57,13 @@ class HomeController extends Controller
      */
     public function store(JobReuest  $request)
     {
-
-
         $user = auth()->user()->id;
-
         $job = new Job();
-
         $job->title =$request->get('title');
         $job->text =$request->get('text');
         $job->user_id =  $user;
         $job->show =  $request->has('show');;
-
-
         $job->save();
-
-
         return redirect(route('home.index'));
     }
 
@@ -92,7 +73,6 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-
         $job = $this->fetchPayOrFail($id);
         return view('job.show', compact('job'));
     }
@@ -104,9 +84,7 @@ class HomeController extends Controller
     public function edit($id)
     {
       $job =  $this->fetchPayOrFail($id);
-
       return view('job.edit', compact('job'));
-
     }
 
     /**
@@ -117,9 +95,7 @@ class HomeController extends Controller
      */
     public function update(JobReuest $request, $id)
     {
-
         $this->jobService->updateJob($id, $request->all());
-
         return redirect(route('home.index'));
 
     }
@@ -131,7 +107,6 @@ class HomeController extends Controller
     public function destroy($id)
     {
         $jobs = Job::findOrFail($id);
-
         $jobs->delete();
         return redirect(route('home.index'));
     }
@@ -144,12 +119,10 @@ class HomeController extends Controller
     {
         try {
             return $this->jobService->getJobById($id);
-
         }
         catch (\Exception $e){
             abort(Response::HTTP_NOT_FOUND,$e->getMessage());
         }
-
     }
 
 }

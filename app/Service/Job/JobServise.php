@@ -1,10 +1,9 @@
 <?php
 
 
-namespace App\Http\Service\Job;
+namespace App\Service\Job;
 
-
-use App\Http\Repositories\JobRepositoryInterface;
+use App\Repositories\JobRepositoryInterface;
 use App\Models\Job;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -15,13 +14,11 @@ use Illuminate\Support\Facades\DB;
  */
 class JobServise implements JobServiseInterface
 {
-
     /**
      * @var JobRepositoryInterface
      */
 
     private $jobRRepository;
-
 
     /**
      * PayService constructor.
@@ -94,7 +91,6 @@ class JobServise implements JobServiseInterface
     {
         $jobs = $this->jobRRepository->findById($id);
         $this->jobRRepository->save($jobs, $payData);
-
         return $jobs->id;
     }
 

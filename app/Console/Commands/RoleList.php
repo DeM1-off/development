@@ -3,7 +3,6 @@
 
 namespace App\Console\Commands;
 
-
 use App\Models\Role;
 use App\Http\Service\Role\RoleServiceInterface;
 use Illuminate\Console\Command;
@@ -61,7 +60,6 @@ class RoleList extends  Command
                 'id' => $item->id,
                 'email_admin' => $item->email_admin,
                 'role_id' => $item->role_id
-
             ];
         }
         $this->table(

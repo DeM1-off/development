@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Http\Repositories;
-
+namespace App\Repositories;
 
 use App\Models\Job;
 use Illuminate\Database\Eloquent\Collection;
@@ -47,7 +46,6 @@ class JobRepository implements JobRepositoryInterface
     public function findByTitle(string  $title): ?Job
     {
         return  $this->model->where('title','=',$title)->first();
-
     }
 
     /**

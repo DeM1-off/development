@@ -3,8 +3,7 @@
 
 namespace App\Console\Commands;
 
-
-use App\Http\Service\Role\RoleServiceInterface;
+use App\Service\Role\RoleServiceInterface;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -39,7 +38,6 @@ class RoleDelete extends Command
     {
         $this->roleservice = $roleservice;
         parent::__construct();
-
     }
 
     /**
@@ -49,9 +47,8 @@ class RoleDelete extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $roleList = $this->roleservice->getUsers()->pluck('email')->toArray();
+        $roleList = $this->roleservice->geDeletetUsers()->pluck('email')->toArray();
         $emailAdmin = $this->choice('Choice delete  Admin', $roleList);
-
         try {
             if ($this->confirm('Do you wish delete')) {
                 $this->roleservice->delete($emailAdmin);
@@ -61,13 +58,11 @@ class RoleDelete extends Command
                 $this->alert('Admin  --' .$emailAdmin  .' stay');
             }
 
-
         }catch (\InvalidArgumentException $exception)
         {
             $this->error('ERROR : '. $exception->getMessage());
         }
         return 0;
     }
-
 
 }

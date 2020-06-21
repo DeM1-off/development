@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Http\Service\Role;
-
+namespace App\Service\Role;
 
 use App\Models\Role;
 use App\Models\User;
@@ -61,6 +60,13 @@ class RoleService implements RoleServiceInterface
         return  User::all('email');
     }
 
+    /**
+     * @return Collection
+     */
+    public function geDeleteUsers(): Collection
+    {
+        return  Role::all('email_admin');
+    }
 
     /**
      * @return Collection|null

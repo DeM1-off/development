@@ -1,8 +1,7 @@
 <?php
 
 
-namespace App\Http\Service\Job;
-
+namespace App\Service\Job;
 
 use App\Models\Job;
 use Illuminate\Database\Eloquent\Collection;
