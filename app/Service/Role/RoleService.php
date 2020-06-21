@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class RoleService
- * @package App\Http\Service\Role
+ * @package App\Service\Role
  */
 class RoleService implements RoleServiceInterface
 {

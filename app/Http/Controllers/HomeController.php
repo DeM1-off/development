@@ -53,7 +53,7 @@ class HomeController extends Controller
 
     /**
      * @param JobReuest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
      */
     public function store(JobReuest  $request)
     {
@@ -90,7 +90,7 @@ class HomeController extends Controller
     /**
      * @param JobReuest $request
      * @param $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
     public function update(JobReuest $request, $id)

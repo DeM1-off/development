@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Class JobServise
- * @package App\Http\Service\Job
+ * @package App\Service\Job
  */
 class JobServise implements JobServiseInterface
 {

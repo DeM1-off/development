@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class JobRepository
- * @package App\Http\Repositories
+ * @package App\Repositories
  */
 class JobRepository implements JobRepositoryInterface
 {
@@ -21,7 +21,6 @@ class JobRepository implements JobRepositoryInterface
 
     /**
      * PayRepository constructor.
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function __construct()
     {
@@ -41,7 +40,6 @@ class JobRepository implements JobRepositoryInterface
     /**
      * @param string $title
      * @return Job|null
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function findByTitle(string  $title): ?Job
     {

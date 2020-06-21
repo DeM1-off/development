@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Interface JobRepositoryInterface
- * @package App\Http\Repositories
+ * @package App\Repositories
  */
 interface JobRepositoryInterface
 {

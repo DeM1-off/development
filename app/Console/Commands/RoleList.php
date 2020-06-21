@@ -4,7 +4,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Role;
-use App\Http\Service\Role\RoleServiceInterface;
+use App\Service\Role\RoleServiceInterface;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
